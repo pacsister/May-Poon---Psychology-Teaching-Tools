@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Psychology Assessments | 心理學量表</title>
+  <style>
+    :root {
+      --bg:#0b1020; --muted:rgba(255,255,255,.72); --muted2:rgba(255,255,255,.55);
+      --border:rgba(255,255,255,.12);
+    }
+    body {
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial, "Noto Sans", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(122,162,255,.25), transparent 55%),
+                  radial-gradient(900px 500px at 80% 10%, rgba(61,220,151,.18), transparent 55%),
+                  var(--bg);
+      color:#fff;
+    }
+    .wrap{max-width:980px; margin:0 auto; padding: 26px 16px 60px;}
+    .hero{
+      border:1px solid var(--border); background: rgba(18,26,51,.75); border-radius: 22px; padding: 18px;
+      backdrop-filter: blur(10px); box-shadow: 0 18px 50px rgba(0,0,0,.35);
+    }
+    h1{margin:0; font-size: 22px;}
+    .sub{margin-top:8px; color: var(--muted2); line-height:1.6; font-size: 13px;}
+    .grid{margin-top: 14px; display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
+    @media (max-width: 780px){ .grid{grid-template-columns:1fr;} }
+    .card{
+      border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);
+      border-radius: 18px; padding: 14px; text-decoration:none; color:#fff; display:block;
+    }
+    .card:hover{border-color: rgba(122,162,255,.45); background: rgba(122,162,255,.08);}
+    .title{font-weight:800;}
+    .desc{margin-top:6px; color: var(--muted); font-size: 13px; line-height: 1.6;}
+    .pill{display:inline-block; margin-top:10px; font-size:12px; color: rgba(255,255,255,.82);
+      border:1px solid rgba(255,255,255,.14); padding: 4px 10px; border-radius:999px; background: rgba(0,0,0,.10);
+    }
+    .soon{opacity:.75}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <h1>Assessment Pages / 量表頁面</h1>
+      <div class="sub">
+        EN + 繁中 • For classroom learning & reflection • GitHub Pages ready<br/>
+        英文＋繁中 • 用於課堂學習與反思 • 適用於 GitHub Pages
+      </div>
+      <nav class="shared-nav" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:10px;">
+  <a href="index.html" style="text-decoration:none; color:#fff; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); padding:8px 10px; border-radius:999px; display:inline-flex; gap:8px; align-items:center;">
+    <span style="font-weight:800;">Home</span><span style="opacity:.75;">主頁</span>
+  </a>
+  <a href="aas.html" style="text-decoration:none; color:#fff; border:1px solid rgba(255,255,255,.14); background:rgba(122,162,255,.12); padding:8px 10px; border-radius:999px; display:inline-flex; gap:8px; align-items:center;">
+    <span style="font-weight:800;">AA Scale</span><span style="opacity:.75;">成人依附</span>
+  </a>
+  <a href="big5.html" style="text-decoration:none; color:#fff; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); padding:8px 10px; border-radius:999px; display:inline-flex; gap:8px; align-items:center;">
+    <span style="font-weight:800;">Big Five</span><span style="opacity:.75;">五大人格</span>
+  </a>
+  <a href="holland.html" style="text-decoration:none; color:#fff; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); padding:8px 10px; border-radius:999px; display:inline-flex; gap:8px; align-items:center;">
+    <span style="font-weight:800;">Holland</span><span style="opacity:.75;">職業興趣</span>
+  </a>
+</nav>
+      <div class="grid">
+        <a class="card" href="aas.html">
+          <div class="title">Adult Attachment Scale (AAS) / 成人依附量表</div>
+          <div class="desc">Bilingual items, auto-scoring, and interpretation. / 雙語題目、自動計分、結果解讀。</div>
+          <div class="pill">Open / 開啟</div>
+        </a>
+        <a class="card" href="holland.html">
+          <div class="title">Holland RIASEC / 職業興趣測試</div>
+          <div class="desc">3 parts, auto-scoring, top-3 code, bilingual interpretation. / 三部分、自動計分、最高三碼、雙語解讀。</div>
+          <div class="pill">Open / 開啟</div>
+        </a>
+        <a class="card soon" href="big5.html">
+          <div class="title">NEO Big Five (60) / NEO 五大人格（60題）</div>
+          <div class="desc">If you upload big5.html, this link will work. / 上載 big5.html 後此連結即可使用。</div>
+          <div class="pill">Open / 開啟</div>
+        </a>
+      </div>
+      <footer class="site-footer" style="margin-top:18px; padding-top:14px; border-top:1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.72); font-size:12px; line-height:1.6;">
+  <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:flex-start;">
+    <div>
+      <div style="font-weight:800; color: rgba(255,255,255,.86);">May Poon 潘美</div>
+      <div>Hong Kong Community College (CPCE, PolyU) 香港專上學院（理大 CPCE）</div>
+      <div>Contact / 聯絡：<span style="opacity:.9;">[edit me]</span></div>
+    </div>
+    <div style="max-width:520px;">
+      <div style="font-weight:800; color: rgba(255,255,255,.86);">Use & Privacy / 用途與私隱</div>
+      <div>For classroom learning and reflection. This site does not collect answers. / 僅供課堂學習與反思，本網站不會收集作答內容。</div>
+    </div>
+  </div>
+  <div style="margin-top:10px; opacity:.8;">© 2026 May Poon. Teaching use only. / 教學用途。</div>
+</footer>
+    </div>
+  </div>
+</body>
+</html>
