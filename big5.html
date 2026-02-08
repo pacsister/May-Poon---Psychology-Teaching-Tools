@@ -97,7 +97,7 @@ th{color:rgba(255,255,255,.86)}
 <div class="wrap">
   <div class="hero">
     <h1 id="title">NEO Big Five (Short Form — 60 items)</h1>
-    <div class="sub" id="subtitle">Choose one option for each statement (SD → SA).</div>
+    <div class="sub" id="subtitle">Choose one option for each statement using the scale below (SD → SA).</div>
 
     <div class="langToggle" aria-label="Language toggle">
       <span class="pill" id="langLabel">Language / 語言</span>
@@ -108,7 +108,24 @@ th{color:rgba(255,255,255,.86)}
     <div class="sub" id="scaleLine">
       <span class="pill">SD</span><span class="pill">D</span><span class="pill">N</span><span class="pill">A</span><span class="pill">SA</span>
     </div>
-
+<div class="note" id="scaleLegend">
+  <span class="enOnly">
+    <b>Response scale:</b>
+    SD = Strongly Disagree,
+    D = Disagree,
+    N = Neutral,
+    A = Agree,
+    SA = Strongly Agree.
+  </span>
+  <span class="zhOnly">
+    <b>作答量表：</b>
+    SD＝非常不同意，
+    D＝不同意，
+    N＝中立，
+    A＝同意，
+    SA＝非常同意。
+  </span>
+</div>
     <nav class="shared-nav" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:10px;">
       <a href="index.html" style="text-decoration:none; color:#fff; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); padding:8px 10px; border-radius:999px; display:inline-flex; gap:8px; align-items:center;">
         <span style="font-weight:800;">Home</span><span style="opacity:.75;">主頁</span>
@@ -215,7 +232,7 @@ let LANG = localStorage.getItem('neo_lang') || 'en';
 function i18n(){
   const en = LANG === 'en';
   document.getElementById('title').textContent = en ? 'NEO Big Five (Short Form — 60 items)' : 'NEO 五大人格（短版 60 題）';
-  document.getElementById('subtitle').textContent = en ? 'Choose one option for each statement (SD → SA).' : '請就每句陳述選擇一個最符合的選項（SD → SA）。';
+  document.getElementById('subtitle').textContent = en ? 'Choose one option for each statement using the scale below (SD → SA).' : '請使用下列量表（SD → SA），就每句陳述選擇一個最符合你平時想法或感受的選項。請憑直覺作答，毋須花時間反覆思考。';
 
   document.getElementById('scoringNote').innerHTML = en
     ? '<b>Scoring:</b> use the <b>numbers in the bubbles (0–4)</b> for each item, then add the 12 items in each column (same column / 直行) to get 5 totals.'
