@@ -116,7 +116,7 @@ th{color:rgba(255,255,255,.86)}
       <a href="aas.html" style="text-decoration:none; color:#fff; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); padding:8px 10px; border-radius:999px; display:inline-flex; gap:8px; align-items:center;">
         <span style="font-weight:800;">AA Scale</span><span style="opacity:.75;">成人依附</span>
       </a>
-      <a href="big5_bilingual.html" style="text-decoration:none; color:#fff; border:1px solid rgba(255,255,255,.14); background:rgba(122,162,255,.12); padding:8px 10px; border-radius:999px; display:inline-flex; gap:8px; align-items:center;">
+      <a href="big5.html" style="text-decoration:none; color:#fff; border:1px solid rgba(255,255,255,.14); background:rgba(122,162,255,.12); padding:8px 10px; border-radius:999px; display:inline-flex; gap:8px; align-items:center;">
         <span style="font-weight:800;">Big Five</span><span style="opacity:.75;">五大人格</span>
       </a>
       <a href="holland.html" style="text-decoration:none; color:#fff; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); padding:8px 10px; border-radius:999px; display:inline-flex; gap:8px; align-items:center;">
@@ -174,12 +174,11 @@ th{color:rgba(255,255,255,.86)}
       </div>
     </div>
 
-    <footer class="site-footer" style="margin-top:18px; padding-top:14px; border-top:1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.72); font-size:12px; line-height:1.6;">
+    <footer id="siteFooter" class="site-footer hidden" style="margin-top:18px; padding-top:14px; border-top:1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.72); font-size:12px; line-height:1.6;">
       <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:space-between; align-items:flex-start;">
         <div>
-          <div style="font-weight:800; color: rgba(255,255,255,.86);">May Poon 潘美</div>
-          <div>Hong Kong Community College (CPCE, PolyU) 香港專上學院（理大 CPCE）</div>
-          <div>Contact / 聯絡：<span style="opacity:.9;">[edit me]</span></div>
+          <div style="font-weight:800; color: rgba(255,255,255,.86);">May Poon 潘美蘭</div>
+          <div>Contact / 聯絡：<span style="opacity:.9;">[WhatsApp only: 6639-5535]</span></div>
         </div>
         <div style="max-width:520px;">
           <div style="font-weight:800; color: rgba(255,255,255,.86);">Use &amp; Privacy / 用途與私隱</div>
@@ -210,7 +209,7 @@ for(let i=1;i<=60;i++) TRAITS[(i-1)%5].items.push(i);
 
 const SCALE = ['SD','D','N','A','SA'];
 const answers = new Map(); // item -> score 0..4
-
+let RESULTS_REVEALED = false; // hide totals/footer until Score
 let LANG = localStorage.getItem('neo_lang') || 'en';
 
 function i18n(){
@@ -264,17 +263,28 @@ function updateTop(){
   if(countEl) countEl.textContent = String(done);
   document.getElementById('bar').style.width=(done/60*100).toFixed(1)+'%';
 
+  // ✅ Hide totals during answering
+  if(!RESULTS_REVEALED){
+    document.getElementById('outN').textContent='—';
+    document.getElementById('outE').textContent='—';
+    document.getElementById('outO').textContent='—';
+    document.getElementById('outA').textContent='—';
+    document.getElementById('outC').textContent='—';
+    return;
+  }
+
+  // ✅ Only show totals after Score
   const totals={N:0,E:0,O:0,A:0,C:0};
   for(const t of TRAITS){
     let sum=0;
     for(const i of t.items) if(answers.has(i)) sum+=answers.get(i);
     totals[t.key]=sum;
   }
-  document.getElementById('outN').textContent=done?String(totals.N):'—';
-  document.getElementById('outE').textContent=done?String(totals.E):'—';
-  document.getElementById('outO').textContent=done?String(totals.O):'—';
-  document.getElementById('outA').textContent=done?String(totals.A):'—';
-  document.getElementById('outC').textContent=done?String(totals.C):'—';
+  document.getElementById('outN').textContent=String(totals.N);
+  document.getElementById('outE').textContent=String(totals.E);
+  document.getElementById('outO').textContent=String(totals.O);
+  document.getElementById('outA').textContent=String(totals.A);
+  document.getElementById('outC').textContent=String(totals.C);
 }
 
 function setAnswer(itemNo, score){ answers.set(itemNo, score); updateTop(); }
@@ -290,11 +300,19 @@ function scrollToFirstUnanswered(){
   alert(LANG==='en' ? 'All answered ✅' : '已全部作答 ✅');
 }
 
-function resetAll(){
-  if(!confirm(LANG==='en' ? 'Reset and clear all answers?' : '確定要重設所有作答嗎？')) return;
+ function resetAll(){
+  if(!confirm('Reset and clear all answers?')) return;
+
   answers.clear();
   document.querySelectorAll('input[type="radio"]').forEach(r=>r.checked=false);
   document.getElementById('result').classList.add('hidden');
+
+  /* 🔽 ADD THESE LINES */
+  RESULTS_REVEALED = false;
+
+  const ft = document.getElementById('siteFooter');
+  if(ft) ft.classList.add('hidden');
+
   updateTop();
   window.scrollTo({top:0, behavior:'smooth'});
 }
@@ -348,6 +366,11 @@ function renderNorms(){
 
   document.getElementById('result').classList.remove('hidden');
   document.getElementById('result').scrollIntoView({behavior:'smooth', block:'start'});
+RESULTS_REVEALED = true;
+  updateTop();   // now show N / E / O / A / C totals
+
+  const ft = document.getElementById('siteFooter');
+  if(ft) ft.classList.remove('hidden');
 }
 
 function buildGrid(){
