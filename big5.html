@@ -76,9 +76,27 @@ button:hover{background:rgba(255,255,255,.09)}
   display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex:0 0 auto;
 }
 .txt{line-height:1.45;color:rgba(255,255,255,.92);font-size:13px}
-.choices{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.opt{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.02);cursor:pointer;user-select:none}
-.opt input{accent-color:rgba(122,162,255,.9)}
+.choices{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-top:10px;
+  align-items:flex-start;
+}
+
+.opt{
+  display:flex;
+  width:100%;
+  max-width: 420px;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.02);
+  cursor:pointer;
+  user-select:none;
+}
 
 .hidden{display:none}
 .langToggle{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-top:10px}
